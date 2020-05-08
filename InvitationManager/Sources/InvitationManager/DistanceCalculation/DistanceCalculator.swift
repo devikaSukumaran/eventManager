@@ -14,9 +14,10 @@ struct DistanceCalculator {
      */
     func checkIfCustomerIsInvited(with latitude: Double, longitude: Double) -> Bool{
         let officeLatitudeInRadian = convertToRadians(from: officeLocationLatitude)
-        let officeLongtitudeInRadian = convertToRadians(from: officeLocationLongitude)
-        return 1.609344 * 3963.0 * acos(sin(officeLatitudeInRadian) * sin(convertToRadians(from: latitude)) +
-            (cos(officeLatitudeInRadian) * cos(convertToRadians(from: latitude)) * cos(convertToRadians(from: longitude) - officeLongtitudeInRadian))) < 100
+        let customerLatitudeInRadian = convertToRadians(from: latitude)
+        
+        return 1.609344 * 3963.0 * acos(sin(officeLatitudeInRadian) * sin(customerLatitudeInRadian) +
+            (cos(officeLatitudeInRadian) * cos(customerLatitudeInRadian) * cos(convertToRadians(from: longitude) - convertToRadians(from: officeLocationLongitude)))) < 100
     }
     /*
      Convert degree to radian
