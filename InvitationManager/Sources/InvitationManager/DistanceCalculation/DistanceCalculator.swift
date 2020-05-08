@@ -10,8 +10,8 @@ import Foundation
 
 struct DistanceCalculator {
     /*
-        Returns if customer lives within 100 kilometers of the office
-    */
+     Returns if customer lives within 100 kilometers of the office
+     */
     func checkIfCustomerIsInvited(with latitude: Double, longitude: Double) -> Bool{
         let officeLatitudeInRadian = convertToRadians(from: officeLocationLatitude)
         let officeLongtitudeInRadian = convertToRadians(from: officeLocationLongitude)
@@ -19,8 +19,8 @@ struct DistanceCalculator {
             (cos(officeLatitudeInRadian) * cos(convertToRadians(from: latitude)) * cos(convertToRadians(from: longitude) - officeLongtitudeInRadian))) < 100
     }
     /*
-        Convert degree to radian
-    */
+     Convert degree to radian
+     */
     func convertToRadians(from degree: Double) -> Double {
         return degree * .pi/180
     }
