@@ -8,8 +8,11 @@
 import Foundation
 
 
+protocol InvitationListCreatable {
+    func getInvitationListFromCustomerRecords() -> [Customer]
+}
 
-class CustomerController {
+class CustomerController: InvitationListCreatable {
     /*
      Fetches customer details, filter the customer details, and returns the data
      */

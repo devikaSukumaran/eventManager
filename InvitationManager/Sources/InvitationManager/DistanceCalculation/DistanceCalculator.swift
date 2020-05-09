@@ -7,12 +7,15 @@
 
 import Foundation
 
+protocol DistanceCalculatable {
+   func checkIfCustomerIsInvited(with latitude: Double, longitude: Double) -> Bool
+}
 
-struct DistanceCalculator {
+struct DistanceCalculator: DistanceCalculatable {
     /*
      Returns if customer lives within 100 kilometers of the office
      */
-    func checkIfCustomerIsInvited(with latitude: Double, longitude: Double) -> Bool{
+    func checkIfCustomerIsInvited(with latitude: Double, longitude: Double) -> Bool {
         let officeLatitudeInRadian = convertToRadians(from: officeLocationLatitude)
         let customerLatitudeInRadian = convertToRadians(from: latitude)
         

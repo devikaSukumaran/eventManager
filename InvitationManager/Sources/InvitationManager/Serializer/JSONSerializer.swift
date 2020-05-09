@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct JSONSerializer {
+protocol JSONSerializable {
+    func readFromTextFile(fileName: String, ofType  type : String) -> Any?
+}
+
+struct JSONSerializer: JSONSerializable {
     
     //Reads and returns the content of a customer record text file
     func readFromTextFile(fileName: String, ofType  type : String) -> Any?{
@@ -18,9 +22,9 @@ struct JSONSerializer {
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: [])
                 fileContents =  jsonResult
             } catch {
-               print("json error: \(error.localizedDescription)")
+                print("json error: \(error.localizedDescription)")
             }
         }
-           return fileContents
-       }
+        return fileContents
+    }
 }
