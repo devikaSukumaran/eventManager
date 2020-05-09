@@ -13,9 +13,12 @@ let fileWithCustomerDetails : String = "customers", typeOfCustomerDetailsFile : 
 let officeLocationLatitude : Double = 53.339428, officeLocationLongitude : Double = -6.257664
 
 public struct InvitationManagerService {
-    public static func getGuestList() {
-        let customerController = CustomerController()
-        let list = customerController.getInvitationListFromCustomerRecords()
-        print(list)
+    //Returns the list of customer invited for food and drinks
+    public static func getGuestList()-> [[String: Any]] {
+        let serialiser = JSONSerializer()
+        let distanceCalculator = DistanceCalculator()
+        let customerController = CustomerController(with: serialiser, distanceCalculator: distanceCalculator)
+        let list = customerController.getInvitationListFromCustomerRecords().compactMap({$0.output})
+        return list
     }
 }

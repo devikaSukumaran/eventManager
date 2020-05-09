@@ -12,7 +12,8 @@ import InvitationManager
 
 struct ContentView: View {
     init() {
-        InvitationManagerService.getGuestList()
+        let guestList = InvitationManagerService.getGuestList()
+        print(guestList)
     }
     var body: some View {
         Text("Hello, World!")
